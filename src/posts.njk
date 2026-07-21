@@ -1,0 +1,14 @@
+---
+title: Posts
+layout: layouts/page.njk
+permalink: /posts/
+---
+{% import "postlist.njk" as postlist %}
+
+<div class="shelf-banner" aria-hidden="true"></div>
+<h1>All posts</h1>
+<ul class="spine-list">
+{% for post in collections.posts %}
+  {{ postlist.spineRow(post, "h2") }}
+{% endfor %}
+</ul>

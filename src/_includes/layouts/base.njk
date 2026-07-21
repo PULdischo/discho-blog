@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {% set pageTitle = (title ~ " · " ~ site.title) if title else site.title %}
+  {% set pageDescription = description or site.description %}
+  {% set canonicalUrl = site.url ~ (page.url | url) %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ pageDescription }}">
+  <link rel="canonical" href="{{ canonicalUrl }}">
+  {% if noindex %}<meta name="robots" content="noindex">{% endif %}
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNSIgZmlsbD0iIzljNDcyNiIvPjxyZWN0IHg9IjEyIiB5PSIzIiB3aWR0aD0iMy41IiBoZWlnaHQ9IjI2IiByeD0iMSIgZmlsbD0iI2U4YjU2OCIvPjxyZWN0IHg9IjE4IiB5PSIzIiB3aWR0aD0iMy41IiBoZWlnaHQ9IjI2IiByeD0iMSIgZmlsbD0iI2Y2ZWNkOSIgb3BhY2l0eT0iMC41NSIvPjwvc3ZnPg==">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}">
+
+  <meta property="og:type" content="{{ ogType or 'website' }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:title" content="{{ title or site.title }}">
+  <meta property="og:description" content="{{ pageDescription }}">
+  <meta property="og:url" content="{{ canonicalUrl }}">
+  {% if image %}<meta property="og:image" content="{{ site.url }}{{ image | url }}">{% endif %}
+
+  <meta name="twitter:card" content="{{ 'summary_large_image' if image else 'summary' }}">
+  <meta name="twitter:title" content="{{ title or site.title }}">
+  <meta name="twitter:description" content="{{ pageDescription }}">
+  {% if image %}<meta name="twitter:image" content="{{ site.url }}{{ image | url }}">{% endif %}
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-title" href="{{ '/' | url }}">{{ site.title }}</a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="{{ '/' | url }}">Home</a></li>
+        <li><a href="{{ '/posts/' | url }}">Posts</a></li>
+        <li><a href="{{ '/pages/' | url }}">Pages</a></li>
+        <li><a href="{{ '/search/' | url }}">Search</a></li>
+        <li><a href="{{ '/accessibility/' | url }}">Accessibility</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="scallop" aria-hidden="true"></div>
+
+  <main id="main" data-pagefind-body>
+    {{ content | safe }}
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; {{ currentYear }} {{ site.title }}</p>
+  </footer>
+</body>
+</html>

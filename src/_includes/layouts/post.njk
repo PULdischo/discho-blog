@@ -1,0 +1,23 @@
+---
+layout: layouts/base.njk
+ogType: article
+---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ title | dump | safe }},
+  "description": {{ (description or site.description) | dump | safe }},
+  "datePublished": "{{ page.date | htmlDateString }}",
+  "url": "{{ site.url }}{{ page.url | url }}",
+  "author": { "@type": "Organization", "name": {{ site.title | dump | safe }} },
+  "publisher": { "@type": "Organization", "name": {{ site.title | dump | safe }} }
+}
+</script>
+<article class="post">
+  <header class="post-header" style="--spine-color: var(--spine-{{ (page.fileSlug | spineIndex) + 1 }})">
+    <h1>{{ title }}</h1>
+    <p class="post-date">Published {{ page.date | readableDate }}</p>
+  </header>
+  {{ content | safe }}
+</article>

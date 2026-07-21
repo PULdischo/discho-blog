@@ -1,0 +1,26 @@
+---
+title: Home
+layout: layouts/base.njk
+---
+{% import "postlist.njk" as postlist %}
+
+<div class="shelf-banner" aria-hidden="true"></div>
+<h1>{{ site.title }}</h1>
+<p>{{ site.description }}</p>
+
+<section class="recent-posts">
+  <h2>Recent posts</h2>
+  <ul class="spine-list">
+  {% for post in collections.posts %}
+    {% if loop.index0 < 3 %}
+      {{ postlist.spineRow(post) }}
+    {% endif %}
+  {% endfor %}
+  </ul>
+</section>
+
+<section class="cta">
+  <a class="button" href="{{ '/search/' | url }}">Search the blog</a>
+  <a class="button" href="{{ '/posts/' | url }}">Browse all posts</a>
+  <a class="button" href="{{ '/pages/' | url }}">Browse all pages</a>
+</section>

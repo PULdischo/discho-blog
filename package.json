@@ -1,0 +1,18 @@
+{
+  "name": "discho-blog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An 11ty blog with Sveltia CMS, Pagefind search, and an automated accessibility report.",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "a11y": "node scripts/a11y.mjs",
+    "build:report": "npm run build && npm run a11y && npm run build"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "axe-core": "^4.9.1",
+    "jsdom": "^24.1.0",
+    "pagefind": "^1.1.0"
+  }
+}

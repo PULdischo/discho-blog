@@ -1,0 +1,12 @@
+---
+title: Pages
+layout: layouts/page.njk
+permalink: /pages/
+---
+
+<h1>All pages</h1>
+<ul class="nameplate-list">
+{% for p in collections.pages %}
+  <li><a class="nameplate" href="{{ p.url | url }}">{{ p.data.title }}</a></li>
+{% endfor %}
+</ul>

@@ -1,0 +1,57 @@
+---
+title: Accessibility
+layout: layouts/page.njk
+permalink: /accessibility/
+noindex: true
+---
+
+<h1>Accessibility report</h1>
+
+{% if a11y.generatedAt %}
+<p>
+  Automated scan with <a href="https://github.com/dequelabs/axe-core">axe-core</a>,
+  last run {{ a11y.generatedAt | readableDate }}.
+</p>
+
+<div class="summary-cards">
+  <div class="summary-card"><strong>{{ a11y.pagesScanned }}</strong>pages scanned</div>
+  <div class="summary-card"><strong>{{ a11y.totalViolations }}</strong>issue groups found</div>
+  <div class="summary-card"><strong>{{ a11y.totalPasses }}</strong>checks passed</div>
+</div>
+
+{% if a11y.totalViolations == 0 %}
+<p>No accessibility issues were detected in the last scan.</p>
+{% else %}
+<table>
+  <caption class="visually-hidden">Accessibility issues by page</caption>
+  <thead>
+    <tr>
+      <th scope="col">Page</th>
+      <th scope="col">Rule</th>
+      <th scope="col">Impact</th>
+      <th scope="col">Description</th>
+      <th scope="col">Nodes</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for page in a11y.pages %}
+    {% for v in page.violations %}
+    <tr>
+      <td><a href="{{ page.url }}">{{ page.url }}</a></td>
+      <td><a href="{{ v.helpUrl }}">{{ v.id }}</a></td>
+      <td>{{ v.impact }}</td>
+      <td>{{ v.description }}</td>
+      <td>{{ v.nodeCount }}</td>
+    </tr>
+    {% endfor %}
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+{% else %}
+<p>
+  No scan has been run yet. Run <code>npm run build:report</code> to build the
+  site, scan it with axe-core, and regenerate this page with the results.
+</p>
+{% endif %}

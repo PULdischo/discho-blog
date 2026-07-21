@@ -1,0 +1,41 @@
+# Sveltia CMS configuration — https://github.com/sveltia/sveltia-cms
+#
+# GitHub Pages only serves static files, so the "github" backend below needs
+# an OAuth client to authenticate editors. Deploy the small proxy at
+# https://github.com/sveltia/sveltia-cms-auth (works on Cloudflare Workers'
+# free tier) and register a GitHub OAuth App pointed at it, then set
+# base_url/auth_endpoint below to that proxy's URL. Until that's set up,
+# swap backend.name to "test-repo" to try the CMS locally against an
+# in-browser mock instead of real GitHub data.
+backend:
+  name: github
+  repo: your-username/discho-blog # TODO: update to the real GitHub owner/repo
+  branch: main
+  # base_url: https://your-oauth-proxy.example.workers.dev
+  # auth_endpoint: auth
+
+site_url: https://example.github.io # TODO: match src/_data/site.json
+media_folder: "src/assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "src/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Tags", name: "tags", widget: "list", default: ["posts"] }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Pages"
+    folder: "src/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }

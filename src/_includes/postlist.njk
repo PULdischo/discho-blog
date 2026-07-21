@@ -1,0 +1,14 @@
+{% macro spineRow(post, level="h3") %}
+<li class="spine-row">
+  <span class="spine" style="--spine-color: var(--spine-{{ (post.fileSlug | spineIndex) + 1 }})" aria-hidden="true"></span>
+  <div class="spine-content">
+    {% if level == "h2" %}
+    <h2><a href="{{ post.url | url }}">{{ post.data.title }}</a></h2>
+    {% else %}
+    <h3><a href="{{ post.url | url }}">{{ post.data.title }}</a></h3>
+    {% endif %}
+    <p class="post-date">{{ post.date | readableDate }}</p>
+    {% if post.data.description %}<p>{{ post.data.description }}</p>{% endif %}
+  </div>
+</li>
+{% endmacro %}

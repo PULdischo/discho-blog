@@ -1,0 +1,18 @@
+---
+title: Search
+layout: layouts/page.njk
+permalink: /search/
+noindex: true
+---
+
+<h1>Search</h1>
+<p>Search across every post and page.</p>
+<div id="search"></div>
+
+<link href="{{ '/pagefind/pagefind-ui.css' | url }}" rel="stylesheet">
+<script src="{{ '/pagefind/pagefind-ui.js' | url }}"></script>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    new PagefindUI({ element: "#search", showSubResults: true });
+  });
+</script>

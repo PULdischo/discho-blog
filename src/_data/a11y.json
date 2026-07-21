@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-07-21T11:20:18.446Z",
+  "pagesScanned": 11,
+  "totalViolations": 0,
+  "totalPasses": 266,
+  "pages": [
+    {
+      "url": "/accessibility/",
+      "violations": []
+    },
+    {
+      "url": "/admin/",
+      "violations": []
+    },
+    {
+      "url": "/",
+      "violations": []
+    },
+    {
+      "url": "/pages/about/",
+      "violations": []
+    },
+    {
+      "url": "/pages/",
+      "violations": []
+    },
+    {
+      "url": "/posts/accessibility-first/",
+      "violations": []
+    },
+    {
+      "url": "/posts/adding-search-with-pagefind/",
+      "violations": []
+    },
+    {
+      "url": "/posts/building-with-eleventy/",
+      "violations": []
+    },
+    {
+      "url": "/posts/hello-world/",
+      "violations": []
+    },
+    {
+      "url": "/posts/",
+      "violations": []
+    },
+    {
+      "url": "/search/",
+      "violations": []
+    }
+  ]
+}
