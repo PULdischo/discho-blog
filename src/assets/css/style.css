@@ -393,3 +393,99 @@ td {
   white-space: nowrap;
   border: 0;
 }
+
+/* Code: inline and blocks, plus a Prism token theme tinted to the box
+   palette (@11ty/eleventy-plugin-syntaxhighlight emits `.token.*` classes). */
+code,
+pre {
+  font-family: "SFMono-Regular", "JetBrains Mono", "Fira Code", Consolas,
+    "Liberation Mono", Menlo, monospace;
+  font-size: 0.9em;
+}
+
+:not(pre) > code {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.25rem;
+  padding: 0.1rem 0.35rem;
+}
+
+pre[class*="language-"] {
+  margin: 1.5rem 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--color-border);
+  border-left: 0.35rem solid var(--color-gold);
+  border-radius: 0.4rem;
+  background: color-mix(in srgb, var(--color-surface) 70%, var(--color-bg));
+  overflow-x: auto;
+  line-height: 1.5;
+}
+
+pre[class*="language-"] > code {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+.token.punctuation {
+  color: var(--color-gold);
+}
+
+.token.keyword,
+.token.boolean,
+.token.constant,
+.token.important,
+.token.atrule {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex {
+  color: var(--color-olive);
+}
+
+.token.function,
+.token.class-name,
+.token.selector {
+  color: var(--color-border);
+  font-weight: 600;
+}
+
+@media (prefers-color-scheme: dark) {
+  .token.function,
+  .token.class-name,
+  .token.selector {
+    color: var(--color-gold);
+  }
+}
+
+.token.number,
+.token.property,
+.token.tag,
+.token.symbol,
+.token.deleted {
+  color: var(--color-accent);
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.token.variable,
+.token.attr-name {
+  color: var(--color-text);
+}
+
+.token.namespace {
+  opacity: 0.7;
+}

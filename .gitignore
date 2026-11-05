@@ -3,3 +3,6 @@ _site/
 .cache/
 .DS_Store
 *.log
+
+# Downloaded datasets (the notebooks fetch these from HuggingFace)
+*.parquet
